@@ -24,9 +24,9 @@ before_install:
 
 script:
   # Build all images
-  - docker build --build-arg PLATFORM=linux-amd64 -t "$DOCKER_ID_USER"/logitech-media-server:linux-amd64 -f Dockerfile.linux-amd64 .
-  - docker build --build-arg PLATFORM=linux-arm -t "$DOCKER_ID_USER"/logitech-media-server:linux-arm -f Dockerfile.linux-arm32v7 .
-  - docker build --build-arg PLATFORM=linux-arm64 -t "$DOCKER_ID_USER"/logitech-media-server:linux-arm64 -f Dockerfile.linux-arm64v8 .
+  - docker build --build-arg PLATFORM=linux-amd64 -t "$DOCKER_USER"/logitech-media-server:linux-amd64 -f Dockerfile.linux-amd64 .
+  - docker build --build-arg PLATFORM=linux-arm -t "$DOCKER_USER"/logitech-media-server:linux-arm -f Dockerfile.linux-arm32v7 .
+  - docker build --build-arg PLATFORM=linux-arm64 -t "$DOCKER_USER"/logitech-media-server:linux-arm64 -f Dockerfile.linux-arm64v8 .
   
 after_success:
   - > 
@@ -35,14 +35,14 @@ after_success:
       echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
       
       # Docker Tag
-      docker tag "$DOCKER_ID_USER"/logitech-media-server:linux-amd64 "$DOCKER_ID_USER"/logitech-media-server:${TRAVIS_TAG}-linux-amd64
-      docker tag "$DOCKER_ID_USER"/logitech-media-server:linux-arm "$DOCKER_ID_USER"/logitech-media-server:${TRAVIS_TAG}-linux-arm
-      docker tag "$DOCKER_ID_USER"/logitech-media-server:linux-arm64 "$DOCKER_ID_USER"/logitech-media-server:${TRAVIS_TAG}-linux-arm64
+      docker tag "$DOCKER_USER"/logitech-media-server:linux-amd64 "$DOCKER_USER"/logitech-media-server:${TRAVIS_TAG}-linux-amd64
+      docker tag "$DOCKER_USER"/logitech-media-server:linux-arm "$DOCKER_USER"/logitech-media-server:${TRAVIS_TAG}-linux-arm
+      docker tag "$DOCKER_USER"/logitech-media-server:linux-arm64 "$DOCKER_USER"/logitech-media-server:${TRAVIS_TAG}-linux-arm64
       
       # Docker Push
-      docker push "$DOCKER_ID_USER"/logitech-media-server:${TRAVIS_TAG}-linux-amd64
-      docker push "$DOCKER_ID_USER"/logitech-media-server:${TRAVIS_TAG}-linux-arm
-      docker push "$DOCKER_ID_USER"/logitech-media-server:${TRAVIS_TAG}-linux-arm64
+      docker push "$DOCKER_USER"/logitech-media-server:${TRAVIS_TAG}-linux-amd64
+      docker push "$DOCKER_USER"/logitech-media-server:${TRAVIS_TAG}-linux-arm
+      docker push "$DOCKER_USER"/logitech-media-server:${TRAVIS_TAG}-linux-arm64
       
       # Download manifest-tool
       wget https://github.com/estesp/manifest-tool/releases/download/v0.7.0/manifest-tool-linux-amd64
