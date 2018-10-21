@@ -50,6 +50,6 @@ after_success:
       chmod +x manifest-tool
       
       # Create and push manifest-list
-      ./manifest-tool push from-args --platforms linux/amd64,linux/arm,linux/arm64 --template ":${DOCKER_ID_USER}/logitech-media-server:${TRAVIS_TAG}-OS-ARCH" --target ":${DOCKER_ID_USER}/logitech-media-server:$TRAVIS_TAG"
-      ./manifest-tool push from-args --platforms linux/amd64,linux/arm,linux/arm64 --template ":${DOCKER_ID_USER}/logitech-media-server:${TRAVIS_TAG}-OS-ARCH" --target ":${DOCKER_ID_USER}/logitech-media-server:latest"
+      ./manifest-tool push from-args --platforms linux/amd64,linux/arm,linux/arm64 --template "${DOCKER_ID_USER}/logitech-media-server:${TRAVIS_TAG}-OS-ARCH" --target "${DOCKER_ID_USER}/logitech-media-server:$TRAVIS_TAG"
+      ./manifest-tool push from-args --platforms linux/amd64,linux/arm,linux/arm64 --template "${DOCKER_ID_USER}/logitech-media-server:${TRAVIS_TAG}-OS-ARCH" --target "${DOCKER_ID_USER}/logitech-media-server:latest"
     fi
