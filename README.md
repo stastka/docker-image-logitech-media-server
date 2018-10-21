@@ -1,5 +1,17 @@
 # Docker Container for Logitech Media Server
 
+- [Description](#description)
+- [Usage (Copied from original instructions)](#usage-copied-from-original-instructions)
+- [Using docker-compose](#using-docker-compose)
+
+## Description
+
+This image is based on the [Docker Container for Logitech Media Server](https://hub.docker.com/r/larsks/logitech-media-server/) ([Github](https://github.com/larsks/docker-image-logitech-media-server)). It was adapted according to the PR by [RaymondMouthaan](https://github.com/RaymondMouthaan) to support additional architectures. The only changes done were made to allow for travis to properly build the image using the docker username as parameter. The source can be found on [github](https://github.com/DOliana/docker-image-logitech-media-server).
+
+Until the PR is reviewed this is a testing image.
+
+## Usage (Copied from original instructions)
+
 This is a Docker image for running the Logitech Media Server package
 (aka SqueezeboxServer).
 
@@ -24,7 +36,7 @@ on that port.
 
 ## Using docker-compose
 
-There is a [docker-compose-logitech-media-server.yml][] included in this repository that
+There is a [docker-compose-logitech-media-server.yml](https://github.com/DOliana/docker-image-logitech-media-server/blob/master/docker-compose-logitech-media-server.yml) included in this repository that
 you will let you bring up a Logitech Media Server container using
 `docker-compose`.  The compose file includes the following:
 
