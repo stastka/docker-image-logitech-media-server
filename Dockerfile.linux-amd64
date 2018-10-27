@@ -16,7 +16,7 @@ RUN apt-get update && \
 
 # Download and install nightly
 RUN wget -O 'logitechmediaserver_all.deb' $(wget -q -O - ${PACKAGE_URL})  && \
-    mv logitechmediaserver_${PACKAGE_VERSION}_${ARCH}.deb /tmp/logitechmediaserver.deb && \
+    mv logitechmediaserver_all.deb /tmp/logitechmediaserver.deb && \
     dpkg -i /tmp/logitechmediaserver.deb && \
     rm -f /tmp/logitechmediaserver.deb && \
     apt-get clean

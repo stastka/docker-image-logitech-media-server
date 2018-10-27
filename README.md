@@ -1,12 +1,13 @@
 # Docker Container for Logitech Media Server
 
 - [Description](#description)
+- [Changes from original source](#changes-from-original-source)
 - [Usage (Copied from original instructions)](#usage-copied-from-original-instructions)
 - [Using docker-compose](#using-docker-compose)
 
 ## Description
 
-This image is based on the [Docker Container for Logitech Media Server](https://hub.docker.com/r/larsks/logitech-media-server/) ([Github](https://github.com/larsks/docker-image-logitech-media-server)). It was adapted according to the PR by [RaymondMouthaan](https://github.com/RaymondMouthaan) to support additional architectures. The only changes done were made to allow for travis to properly build the image using the docker username as parameter. The source can be found on [github](https://github.com/DOliana/docker-image-logitech-media-server).
+This image is based on the [Docker Container for Logitech Media Server](https://hub.docker.com/r/larsks/logitech-media-server/) ([Github](https://github.com/larsks/docker-image-logitech-media-server)). It was adapted according to the PR by [RaymondMouthaan](https://github.com/RaymondMouthaan) to support additional architectures. The source can be found on [github](https://github.com/DOliana/docker-image-logitech-media-server).
 
 Until the PR is reviewed this is a testing image.
 
@@ -15,6 +16,11 @@ To get the latest package version visit the [download page](http://downloads.sli
 To always get the latest version use [this url](http://www.mysqueezebox.com/update/?version=7.9.2&revision=1&geturl=1&os=deb)
 
 Find the [image on docker hub](https://hub.docker.com/r/doliana/logitech-media-server/)
+
+## Changes from original source
+
+- Always use latest 7.9.X version from [mysqueezebox](http://downloads.slimdevices.com/nightly/index.php?ver=7.9)
+- Change to use deb_all package to simplify installation
 
 ## Usage (Copied from original instructions)
 
