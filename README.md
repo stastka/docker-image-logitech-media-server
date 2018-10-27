@@ -14,6 +14,8 @@ To get the latest package version visit the [download page](http://downloads.sli
 
 To always get the latest version use [this url](http://www.mysqueezebox.com/update/?version=7.9.2&revision=1&geturl=1&os=deb)
 
+Find the [image on docker hub](https://hub.docker.com/r/doliana/logitech-media-server/)
+
 ## Usage (Copied from original instructions)
 
 This is a Docker image for running the Logitech Media Server package
