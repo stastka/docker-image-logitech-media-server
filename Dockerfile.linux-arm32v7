@@ -8,8 +8,9 @@ ENV SQUEEZE_VOL /srv/squeezebox
 ENV LANG C.UTF-8
 ENV DEBIAN_FRONTEND noninteractive
 
-ENV VERSION=7.9.1
-ENV PACKAGE_URL=http://www.mysqueezebox.com/update/?version=${VERSION}&revision=1&geturl=1&os=deb
+# this is the version of LMS to use
+ARG VERSION
+ARG PACKAGE_URL=http://www.mysqueezebox.com/update/?version=${VERSION}&revision=1&geturl=1&os=deb
 
 # Install requirements and utilities
 RUN apt-get update && \

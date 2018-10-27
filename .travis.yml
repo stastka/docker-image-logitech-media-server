@@ -24,9 +24,9 @@ before_install:
 
 script:
   # Build all images
-  - docker build --build-arg PLATFORM=linux-amd64 -t "$DOCKER_USER"/logitech-media-server:linux-amd64 -f Dockerfile.linux-amd64 .
-  - docker build --build-arg PLATFORM=linux-arm -t "$DOCKER_USER"/logitech-media-server:linux-arm -f Dockerfile.linux-arm32v7 .
-  - docker build --build-arg PLATFORM=linux-arm64 -t "$DOCKER_USER"/logitech-media-server:linux-arm64 -f Dockerfile.linux-arm64v8 .
+  - docker build --build-arg PLATFORM=linux-amd64 --build-arg VERSION=${TRAVIS_BRANCH} -t "$DOCKER_USER"/logitech-media-server:linux-amd64 -f Dockerfile.linux-amd64 .
+  - docker build --build-arg PLATFORM=linux-arm --build-arg VERSION=${TRAVIS_BRANCH} -t "$DOCKER_USER"/logitech-media-server:linux-arm -f Dockerfile.linux-arm32v7 .
+  - docker build --build-arg PLATFORM=linux-arm64 --build-arg VERSION=${TRAVIS_BRANCH} -t "$DOCKER_USER"/logitech-media-server:linux-arm64 -f Dockerfile.linux-arm64v8 .
   
 after_success:
     # Always build and push to docker hub to have an updated version in docker 
@@ -34,7 +34,7 @@ after_success:
   - echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
     
     # Docker Tag
-  - datetag=$(date +%Y_%m_%d)
+  - datetag=${TRAVIS_BRANCH}_$(date +%Y_%m_%d)
   - docker tag "$DOCKER_USER"/logitech-media-server:linux-amd64 "$DOCKER_USER"/logitech-media-server:"$datetag"-linux-amd64
   - docker tag "$DOCKER_USER"/logitech-media-server:linux-arm "$DOCKER_USER"/logitech-media-server:"$datetag"-linux-arm
   - docker tag "$DOCKER_USER"/logitech-media-server:linux-arm64 "$DOCKER_USER"/logitech-media-server:"$datetag"-linux-arm64
@@ -51,7 +51,7 @@ after_success:
     
     # Create and push manifest-list
   - ./manifest-tool push from-args --platforms linux/amd64,linux/arm,linux/arm64 --template "${DOCKER_USER}/logitech-media-server:${datetag}-OS-ARCH" --target "${DOCKER_USER}/logitech-media-server:${datetag}"
-  - ./manifest-tool push from-args --platforms linux/amd64,linux/arm,linux/arm64 --template "${DOCKER_USER}/logitech-media-server:${datetag}-OS-ARCH" --target "${DOCKER_USER}/logitech-media-server:latest"
+  - ./manifest-tool push from-args --platforms linux/amd64,linux/arm,linux/arm64 --template "${DOCKER_USER}/logitech-media-server:${datetag}-OS-ARCH" --target "${DOCKER_USER}/logitech-media-server:latest-${TRAVIS_BRANCH}"
     
     # when build version is set, push this also
   - >
