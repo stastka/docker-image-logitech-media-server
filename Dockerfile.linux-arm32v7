@@ -7,9 +7,7 @@ LABEL maintainer="Raymond M Mouthaan <raymondmmouthaan@gmail.com>"
 ENV SQUEEZE_VOL /srv/squeezebox
 ENV LANG C.UTF-8
 ENV DEBIAN_FRONTEND noninteractive
-ENV PACKAGE_URL=http://downloads-origin.slimdevices.com/nightly/?ver=7.9
-ENV PACKAGE_VERSION=7.9.2~1539967036
-ENV ARCH=arm
+ENV PACKAGE_URL=http://www.mysqueezebox.com/update/?version=7.9.2&revision=1&geturl=1&os=deb
 
 # Install requirements and utilities
 RUN apt-get update && \
@@ -19,7 +17,7 @@ RUN apt-get update && \
     && apt-get clean
 
 # Download and install nightly
-RUN wget -r --no-directories --no-parent -A 'logitechmediaserver_'${PACKAGE_VERSION}'_'${ARCH}'.deb' ${PACKAGE_URL} && \
+RUN wget -O 'logitechmediaserver_all.deb' $(wget -q -O - ${PACKAGE_URL})  && \
     mv logitechmediaserver_${PACKAGE_VERSION}_${ARCH}.deb /tmp/logitechmediaserver.deb && \
     dpkg -i /tmp/logitechmediaserver.deb && \
     rm -f /tmp/logitechmediaserver.deb && \
