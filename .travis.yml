@@ -24,9 +24,9 @@ before_install:
 
 script:
   # Build all images
-  - docker build --build-arg PLATFORM=linux-amd64 --build-arg VERSION=${TRAVIS_BRANCH} -t "$DOCKER_USER"/logitech-media-server:linux-amd64 -f Dockerfile.linux-amd64 .
-  - docker build --build-arg PLATFORM=linux-arm --build-arg VERSION=${TRAVIS_BRANCH} -t "$DOCKER_USER"/logitech-media-server:linux-arm -f Dockerfile.linux-arm32v7 .
-  - docker build --build-arg PLATFORM=linux-arm64 --build-arg VERSION=${TRAVIS_BRANCH} -t "$DOCKER_USER"/logitech-media-server:linux-arm64 -f Dockerfile.linux-arm64v8 .
+  - docker build --build-arg PLATFORM=linux-amd64 --build-arg VERSION=$TRAVIS_BRANCH -t "$DOCKER_USER"/logitech-media-server:linux-amd64 -f Dockerfile.linux-amd64 .
+  - docker build --build-arg PLATFORM=linux-arm --build-arg VERSION=$TRAVIS_BRANCH -t "$DOCKER_USER"/logitech-media-server:linux-arm -f Dockerfile.linux-arm32v7 .
+  - docker build --build-arg PLATFORM=linux-arm64 --build-arg VERSION=$TRAVIS_BRANCH -t "$DOCKER_USER"/logitech-media-server:linux-arm64 -f Dockerfile.linux-arm64v8 .
   
 after_success:
     # Always build and push to docker hub to have an updated version in docker 

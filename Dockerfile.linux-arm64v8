@@ -19,8 +19,9 @@ RUN apt-get update && \
     iproute2 \
     && apt-get clean
 
-# Download and install nightly
-RUN wget -O 'logitechmediaserver_all.deb' $(wget -q -O - ${PACKAGE_URL})  && \
+# Download and install LMS
+RUN echo download LMS from $PACKAGE_URL && \
+    wget -O 'logitechmediaserver_all.deb' $(wget -q -O - ${PACKAGE_URL}) -q && \
     mv logitechmediaserver_all.deb /tmp/logitechmediaserver.deb && \
     dpkg -i /tmp/logitechmediaserver.deb && \
     rm -f /tmp/logitechmediaserver.deb && \
