@@ -15,7 +15,7 @@ To get the latest package version visit the [download page](http://downloads.sli
 
 To always get the latest version use [this url](http://www.mysqueezebox.com/update/?version=7.9.2&revision=1&geturl=1&os=deb)
 
-Find the [image on docker hub](https://hub.docker.com/r/doliana/logitech-media-server/)
+Find the image on [docker hub](https://hub.docker.com/r/doliana/logitech-media-server/)
 
 ## Changes from original source
 
@@ -38,7 +38,6 @@ Run Directly:
                -v <local-state-dir>:/srv/squeezebox \
                -v <audio-dir>:/srv/music \
                larsks/logitech-media-server
-
 
 The web interface runs on port 9000.  If you also want this available
 on port 80 (so you can use `http://yourserver/` without a port number
