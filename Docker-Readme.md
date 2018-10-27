@@ -23,6 +23,11 @@ This image is built weekly and always uses the latest version of 7.9.0, 7.9.1 an
 This is a Docker image for running the Logitech Media Server package
 (aka SqueezeboxServer).
 
+The imageas both for the latest stable 7.9 and the latest nightly of 7.9 are built and pushed automatically.
+
+- to use the latest stable version of LMS, use the tag latest-7.9.0
+- to use the latest stable version of LMS, use the tag latest-7.9.2
+
 Run Directly:
 
     docker run -p 9000:9000 \
