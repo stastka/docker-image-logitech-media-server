@@ -29,32 +29,32 @@ script:
   - docker build --build-arg PLATFORM=linux-arm64 -t "$DOCKER_USER"/logitech-media-server:linux-arm64 -f Dockerfile.linux-arm64v8 .
   
 after_success:
-  - >
     # Always build and push to docker hub to have an updated version in docker 
     # Docker login
-    echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+  - echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
     
     # Docker Tag
-    datetag=$(date +%Y_%m_%d)
-    docker tag "$DOCKER_USER"/logitech-media-server:linux-amd64 "$DOCKER_USER"/logitech-media-server:"$datetag"-linux-amd64
-    docker tag "$DOCKER_USER"/logitech-media-server:linux-arm "$DOCKER_USER"/logitech-media-server:"$datetag"-linux-arm
-    docker tag "$DOCKER_USER"/logitech-media-server:linux-arm64 "$DOCKER_USER"/logitech-media-server:"$datetag"-linux-arm64
+  - datetag=$(date +%Y_%m_%d)
+  - docker tag "$DOCKER_USER"/logitech-media-server:linux-amd64 "$DOCKER_USER"/logitech-media-server:"$datetag"-linux-amd64
+  - docker tag "$DOCKER_USER"/logitech-media-server:linux-arm "$DOCKER_USER"/logitech-media-server:"$datetag"-linux-arm
+  - docker tag "$DOCKER_USER"/logitech-media-server:linux-arm64 "$DOCKER_USER"/logitech-media-server:"$datetag"-linux-arm64
     
     # Docker Push
-    docker push "$DOCKER_USER"/logitech-media-server:"$datetag"-linux-amd64
-    docker push "$DOCKER_USER"/logitech-media-server:"$datetag"-linux-arm
-    docker push "$DOCKER_USER"/logitech-media-server:"$datetag"-linux-arm64
+  - docker push "$DOCKER_USER"/logitech-media-server:"$datetag"-linux-amd64
+  - docker push "$DOCKER_USER"/logitech-media-server:"$datetag"-linux-arm
+  - docker push "$DOCKER_USER"/logitech-media-server:"$datetag"-linux-arm64
     
     # Download manifest-tool
-    wget https://github.com/estesp/manifest-tool/releases/download/v0.7.0/manifest-tool-linux-amd64
-    mv manifest-tool-linux-amd64 manifest-tool
-    chmod +x manifest-tool
+  - wget https://github.com/estesp/manifest-tool/releases/download/v0.7.0/manifest-tool-linux-amd64
+  - mv manifest-tool-linux-amd64 manifest-tool
+  - chmod +x manifest-tool
     
     # Create and push manifest-list
-    ./manifest-tool push from-args --platforms linux/amd64,linux/arm,linux/arm64 --template "${DOCKER_USER}/logitech-media-server:${datetag}-OS-ARCH" --target "${DOCKER_USER}/logitech-media-server:${datetag}"
-    ./manifest-tool push from-args --platforms linux/amd64,linux/arm,linux/arm64 --template "${DOCKER_USER}/logitech-media-server:${datetag}-OS-ARCH" --target "${DOCKER_USER}/logitech-media-server:latest"
+  - ./manifest-tool push from-args --platforms linux/amd64,linux/arm,linux/arm64 --template "${DOCKER_USER}/logitech-media-server:${datetag}-OS-ARCH" --target "${DOCKER_USER}/logitech-media-server:${datetag}"
+  - ./manifest-tool push from-args --platforms linux/amd64,linux/arm,linux/arm64 --template "${DOCKER_USER}/logitech-media-server:${datetag}-OS-ARCH" --target "${DOCKER_USER}/logitech-media-server:latest"
     
-    #if build version is set, push this also
+    # when build version is set, push this also
+  - >
     if [ -n "$TRAVIS_TAG" ]; then
       
       # Docker Tag
