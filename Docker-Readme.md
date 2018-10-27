@@ -11,7 +11,7 @@ This image is based on the [Docker Container for Logitech Media Server](https://
 
 Until the PR is reviewed this is a testing image.
 
-This image is built weekly and always uses the latest 7.9.X nightly from [http://downloads.slimdevices.com/nightly/index.php?ver=7.9](http://downloads.slimdevices.com/nightly/index.php?ver=7.9).
+This image is built weekly and always uses the latest version of 7.9.0, 7.9.1 and 7.9.2 (see tags for details) from [http://downloads.slimdevices.com/nightly/index.php?ver=7.9](http://downloads.slimdevices.com/nightly/index.php?ver=7.9).
 
 ## Changes from original source
 
