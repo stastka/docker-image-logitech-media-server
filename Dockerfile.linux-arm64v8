@@ -8,7 +8,8 @@ ENV SQUEEZE_VOL /srv/squeezebox
 ENV LANG C.UTF-8
 ENV DEBIAN_FRONTEND noninteractive
 
-ENV PACKAGE_URL=http://www.mysqueezebox.com/update/?version=7.9.2&revision=1&geturl=1&os=deb
+ENV VERSION=7.9.1
+ENV PACKAGE_URL=http://www.mysqueezebox.com/update/?version=${VERSION}&revision=1&geturl=1&os=deb
 
 # Install requirements and utilities
 RUN apt-get update && \
