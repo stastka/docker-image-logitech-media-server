@@ -10,6 +10,10 @@ This image is based on the [Docker Container for Logitech Media Server](https://
 
 Until the PR is reviewed this is a testing image.
 
+To get the latest package version visit the [download page](http://downloads.slimdevices.com/nightly/index.php?ver=7.9)
+
+To always get the latest version use [this url](http://www.mysqueezebox.com/update/?version=7.9.2&revision=1&geturl=1&os=deb)
+
 ## Usage (Copied from original instructions)
 
 This is a Docker image for running the Logitech Media Server package
