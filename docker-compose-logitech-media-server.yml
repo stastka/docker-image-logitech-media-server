@@ -7,7 +7,7 @@ version: "3.6"
 
 services:
   logitech-media-server:
-    image: larsks/logitech-media-server
+    image: doliana/logitech-media-server
     ports:
       - "9000:9000"
       - "9090:9090"
