@@ -14,7 +14,7 @@ resources:
 
 variables:
   tag: '$(Build.BuildId)'
-  docerImageName: 'doliana/logitech-media-server-dev'
+  dockerImageName: 'doliana/logitech-media-server-dev'
 
 stages:
 - stage: Build
@@ -66,11 +66,11 @@ stages:
         Dockerfile: '$(System.DefaultWorkingDirectory)/Dockerfile.linux-amd64'
         buildContext: $(System.DefaultWorkingDirectory)
         containerRegistry: 'docker hub connection'
-        repository: $(docerImageName)
+        repository: $(dockerImageName)
         arguments: |
           --build-arg VERSION=$(lmsVersion)
         tags: |
-          $(datetag)-linux-amd64
+          $(datetag)-$(lmsVersion)-linux-amd64
     - task: Docker@2
       displayName: build arm32v7 image
       inputs:
@@ -78,11 +78,11 @@ stages:
         Dockerfile: '$(System.DefaultWorkingDirectory)/Dockerfile.linux-arm32v7'
         buildContext: $(System.DefaultWorkingDirectory)
         containerRegistry: 'docker hub connection'
-        repository: $(docerImageName)
+        repository: $(dockerImageName)
         arguments: |
           --build-arg VERSION=$(lmsVersion)
         tags: |
-          $(datetag)-linux-arm
+          $(datetag)-$(lmsVersion)-linux-arm
     - task: Docker@2
       displayName: build arm64v8 image
       inputs:
@@ -90,11 +90,11 @@ stages:
         Dockerfile: '$(System.DefaultWorkingDirectory)/Dockerfile.linux-arm64v8'
         buildContext: $(System.DefaultWorkingDirectory)
         containerRegistry: 'docker hub connection'
-        repository: $(docerImageName)
+        repository: $(dockerImageName)
         arguments: |
           --build-arg VERSION=$(lmsVersion)
         tags: |
-          $(datetag)-linux-arm64
+          $(datetag)-$(lmsVersion)-linux-arm64
 
     - task: Docker@2
       displayName: push amd64 image
@@ -103,9 +103,9 @@ stages:
         Dockerfile: '$(System.DefaultWorkingDirectory)/Dockerfile.linux-amd64'
         buildContext: $(System.DefaultWorkingDirectory)
         containerRegistry: 'docker hub connection'
-        repository: $(docerImageName)
+        repository: $(dockerImageName)
         tags: |
-          $(datetag)-linux-amd64
+          $(datetag)-$(lmsVersion)-linux-amd64
     - task: Docker@2
       displayName: push arm32v7 image
       inputs:
@@ -113,9 +113,9 @@ stages:
         Dockerfile: '$(System.DefaultWorkingDirectory)/Dockerfile.linux-arm32v7'
         buildContext: $(System.DefaultWorkingDirectory)
         containerRegistry: 'docker hub connection'
-        repository: $(docerImageName)
+        repository: $(dockerImageName)
         tags: |
-          $(datetag)-linux-arm
+          $(datetag)-$(lmsVersion)-linux-arm
     - task: Docker@2
       displayName: push arm64v8 image
       inputs:
@@ -123,9 +123,9 @@ stages:
         Dockerfile: '$(System.DefaultWorkingDirectory)/Dockerfile.linux-arm64v8'
         buildContext: $(System.DefaultWorkingDirectory)
         containerRegistry: 'docker hub connection'
-        repository: $(docerImageName)
+        repository: $(dockerImageName)
         tags: |
-          $(datetag)-linux-arm64
+          $(datetag)-$(lmsVersion)-linux-arm64
 
 
     - task: Bash@3
@@ -138,9 +138,8 @@ stages:
            chmod +x manifest-tool
 
            # Create and push manifest-list
-           ./manifest-tool push from-args --platforms linux/amd64,linux/arm,linux/arm64 --template "$(docerImageName):$(datetag)-OS-ARCH" --target "$(docerImageName):$(datetag)"
-           ./manifest-tool push from-args --platforms linux/amd64,linux/arm,linux/arm64 --template "$(docerImageName):$(datetag)-OS-ARCH" --target "$(docerImageName):latest"
-           ./manifest-tool push from-args --platforms linux/amd64,linux/arm,linux/arm64 --template "$(docerImageName):$(datetag)-OS-ARCH" --target "$(docerImageName):latest-$(lmsVersion)"
+           ./manifest-tool push from-args --platforms linux/amd64,linux/arm,linux/arm64 --template "$(dockerImageName):$(datetag)-$(lmsVersion)-OS-ARCH" --target "$(dockerImageName):$(datetag)-$(lmsVersion)"
+           ./manifest-tool push from-args --platforms linux/amd64,linux/arm,linux/arm64 --template "$(dockerImageName):$(datetag)-$(lmsVersion)-OS-ARCH" --target "$(dockerImageName):latest-$(lmsVersion)"
 
 #############################################################################################
 # Biuld & Publish Logitech Media Server 7.9.0
@@ -189,11 +188,11 @@ stages:
         Dockerfile: '$(System.DefaultWorkingDirectory)/Dockerfile.linux-amd64'
         buildContext: $(System.DefaultWorkingDirectory)
         containerRegistry: 'docker hub connection'
-        repository: $(docerImageName)
+        repository: $(dockerImageName)
         arguments: |
           --build-arg VERSION=$(lmsVersion)
         tags: |
-          $(datetag)-linux-amd64
+          $(datetag)-$(lmsVersion)-linux-amd64
     - task: Docker@2
       displayName: build arm32v7 image
       inputs:
@@ -201,11 +200,11 @@ stages:
         Dockerfile: '$(System.DefaultWorkingDirectory)/Dockerfile.linux-arm32v7'
         buildContext: $(System.DefaultWorkingDirectory)
         containerRegistry: 'docker hub connection'
-        repository: $(docerImageName)
+        repository: $(dockerImageName)
         arguments: |
           --build-arg VERSION=$(lmsVersion)
         tags: |
-          $(datetag)-linux-arm
+          $(datetag)-$(lmsVersion)-linux-arm
     - task: Docker@2
       displayName: build arm64v8 image
       inputs:
@@ -213,11 +212,11 @@ stages:
         Dockerfile: '$(System.DefaultWorkingDirectory)/Dockerfile.linux-arm64v8'
         buildContext: $(System.DefaultWorkingDirectory)
         containerRegistry: 'docker hub connection'
-        repository: $(docerImageName)
+        repository: $(dockerImageName)
         arguments: |
           --build-arg VERSION=$(lmsVersion)
         tags: |
-          $(datetag)-linux-arm64
+          $(datetag)-$(lmsVersion)-linux-arm64
 
     - task: Docker@2
       displayName: push amd64 image
@@ -226,9 +225,9 @@ stages:
         Dockerfile: '$(System.DefaultWorkingDirectory)/Dockerfile.linux-amd64'
         buildContext: $(System.DefaultWorkingDirectory)
         containerRegistry: 'docker hub connection'
-        repository: $(docerImageName)
+        repository: $(dockerImageName)
         tags: |
-          $(datetag)-linux-amd64
+          $(datetag)-$(lmsVersion)-linux-amd64
     - task: Docker@2
       displayName: push arm32v7 image
       inputs:
@@ -236,9 +235,9 @@ stages:
         Dockerfile: '$(System.DefaultWorkingDirectory)/Dockerfile.linux-arm32v7'
         buildContext: $(System.DefaultWorkingDirectory)
         containerRegistry: 'docker hub connection'
-        repository: $(docerImageName)
+        repository: $(dockerImageName)
         tags: |
-          $(datetag)-linux-arm
+          $(datetag)-$(lmsVersion)-linux-arm
     - task: Docker@2
       displayName: push arm64v8 image
       inputs:
@@ -246,9 +245,9 @@ stages:
         Dockerfile: '$(System.DefaultWorkingDirectory)/Dockerfile.linux-arm64v8'
         buildContext: $(System.DefaultWorkingDirectory)
         containerRegistry: 'docker hub connection'
-        repository: $(docerImageName)
+        repository: $(dockerImageName)
         tags: |
-          $(datetag)-linux-arm64
+          $(datetag)-$(lmsVersion)-linux-arm64
 
 
     - task: Bash@3
@@ -261,7 +260,5 @@ stages:
            chmod +x manifest-tool
 
            # Create and push manifest-list
-           ./manifest-tool push from-args --platforms linux/amd64,linux/arm,linux/arm64 --template "$(docerImageName):$(datetag)-OS-ARCH" --target "$(docerImageName):$(datetag)"
-           ./manifest-tool push from-args --platforms linux/amd64,linux/arm,linux/arm64 --template "$(docerImageName):$(datetag)-OS-ARCH" --target "$(docerImageName):latest"
-           ./manifest-tool push from-args --platforms linux/amd64,linux/arm,linux/arm64 --template "$(docerImageName):$(datetag)-OS-ARCH" --target "$(docerImageName):latest-$(lmsVersion)"
-
+           ./manifest-tool push from-args --platforms linux/amd64,linux/arm,linux/arm64 --template "$(dockerImageName):$(datetag)-$(lmsVersion)-OS-ARCH" --target "$(dockerImageName):$(datetag)-$(lmsVersion)"
+           ./manifest-tool push from-args --platforms linux/amd64,linux/arm,linux/arm64 --template "$(dockerImageName):$(datetag)-$(lmsVersion)-OS-ARCH" --target "$(dockerImageName):latest-$(lmsVersion)"
