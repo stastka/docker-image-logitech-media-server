@@ -4,6 +4,7 @@
 - [Changes from original source](#changes-from-original-source)
 - [Usage (Copied from original instructions)](#usage-copied-from-original-instructions)
 - [Using docker-compose](#using-docker-compose)
+- [Build Status](#build-status)
 
 ## Description
 
@@ -61,3 +62,7 @@ for example:
     AUDIO_DIR=/home/USERNAME/Music
 
 [docker-compose-logitech-media-server.yml]: docker-compose-logitech-media-server.yml
+
+## Build Status
+
+![Build Status](https://dev.azure.com/DenisOliana/HomeAutomation/_apis/build/status/DOliana.docker-image-logitech-media-server?branchName=master)
