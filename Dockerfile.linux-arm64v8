@@ -8,7 +8,9 @@ ENV SQUEEZE_VOL /srv/squeezebox
 ENV LANG C.UTF-8
 ENV DEBIAN_FRONTEND noninteractive
 
-ENV PACKAGE_URL=http://www.mysqueezebox.com/update/?version=7.9.2&revision=1&geturl=1&os=deb
+# this is the version of LMS to use
+ARG VERSION
+ARG PACKAGE_URL=http://www.mysqueezebox.com/update/?version=${VERSION}&revision=1&geturl=1&os=deb
 
 # Install requirements and utilities
 RUN apt-get update && \
@@ -17,8 +19,9 @@ RUN apt-get update && \
     iproute2 \
     && apt-get clean
 
-# Download and install nightly
-RUN wget -O 'logitechmediaserver_all.deb' $(wget -q -O - ${PACKAGE_URL})  && \
+# Download and install LMS
+RUN echo download LMS from $PACKAGE_URL && \
+    wget -O 'logitechmediaserver_all.deb' $(wget -q -O - ${PACKAGE_URL}) -q && \
     mv logitechmediaserver_all.deb /tmp/logitechmediaserver.deb && \
     dpkg -i /tmp/logitechmediaserver.deb && \
     rm -f /tmp/logitechmediaserver.deb && \
