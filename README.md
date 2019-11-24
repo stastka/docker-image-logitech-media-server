@@ -1,6 +1,7 @@
 # Docker Container for Logitech Media Server
 
 - [Description](#description)
+  - [Changes](#changes)
 - [Changes from original source](#changes-from-original-source)
 - [Usage (Copied from original instructions)](#usage-copied-from-original-instructions)
 - [Using docker-compose](#using-docker-compose)
@@ -17,6 +18,12 @@ To get the latest package version visit the [download page](http://downloads.sli
 To always get the latest version use [this url](http://www.mysqueezebox.com/update/?version=7.9.2&revision=1&geturl=1&os=deb)
 
 Find the image on [docker hub](https://hub.docker.com/r/doliana/logitech-media-server/)
+
+### Changes
+
+- 24.11.2019:
+  - the "latest" tag has been removed - so either latest-7.9.2 or latest-7.9.0 should be used. This simplifies the deployment pipeline.
+  - migrated from travis-ci to Azure DevOps pipeline
 
 ## Changes from original source
 
