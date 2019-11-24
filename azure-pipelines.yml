@@ -17,7 +17,7 @@ resources:
 
 variables:
   tag: '$(Build.BuildId)'
-  dockerImageName: 'doliana/logitech-media-server-dev'
+  dockerImageName: 'doliana/logitech-media-server'
 
 stages:
 - stage: Build
