@@ -20,6 +20,9 @@ stages:
 - stage: Build
   displayName: Build image
   jobs:
+#############################################################################################
+# Biuld & Publish Logitech Media Server 7.9.2
+#############################################################################################
   - job: Build_7_9_2
     displayName: Build & Publish 7.9.2
     variables:
@@ -137,7 +140,11 @@ stages:
            # Create and push manifest-list
            ./manifest-tool push from-args --platforms linux/amd64,linux/arm,linux/arm64 --template "$(docerImageName):$(datetag)-OS-ARCH" --target "$(docerImageName):$(datetag)"
            ./manifest-tool push from-args --platforms linux/amd64,linux/arm,linux/arm64 --template "$(docerImageName):$(datetag)-OS-ARCH" --target "$(docerImageName):latest"
+           ./manifest-tool push from-args --platforms linux/amd64,linux/arm,linux/arm64 --template "$(docerImageName):$(datetag)-OS-ARCH" --target "$(docerImageName):latest-$(lmsVersion)"
 
+#############################################################################################
+# Biuld & Publish Logitech Media Server 7.9.0
+#############################################################################################
 
   - job: Build_7_9_0
     displayName: Build & Publish 7.9.0
@@ -256,4 +263,5 @@ stages:
            # Create and push manifest-list
            ./manifest-tool push from-args --platforms linux/amd64,linux/arm,linux/arm64 --template "$(docerImageName):$(datetag)-OS-ARCH" --target "$(docerImageName):$(datetag)"
            ./manifest-tool push from-args --platforms linux/amd64,linux/arm,linux/arm64 --template "$(docerImageName):$(datetag)-OS-ARCH" --target "$(docerImageName):latest"
+           ./manifest-tool push from-args --platforms linux/amd64,linux/arm,linux/arm64 --template "$(docerImageName):$(datetag)-OS-ARCH" --target "$(docerImageName):latest-$(lmsVersion)"
 
