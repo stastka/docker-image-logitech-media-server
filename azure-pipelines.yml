@@ -1,5 +1,6 @@
 schedules:
-- cron: "0 1 * * 5"
+# cron: minute hour day-of-month month day-of-week
+- cron: "0 1 * * 6"
   displayName: Weekly build
   branches:
     include:
