@@ -48,7 +48,6 @@ stages:
             CONDITIONALBRANCHTAG="-${BUILD_SOURCEBRANCHNAME}"
             echo "##vso[task.setvariable variable=conditionalBranchTag]$CONDITIONALBRANCHTAG"
             echo "not master - conditionalBranchTag set to $CONDITIONALBRANCHTAG"
-            printenv
           else
             CONDITIONALBRANCHTAG=""
             echo "master - conditionalBranchTag set to $CONDITIONALBRANCHTAG"
