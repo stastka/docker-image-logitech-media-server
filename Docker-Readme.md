@@ -38,7 +38,7 @@ Run Directly:
                -v /etc/timezone:/etc/timezone:ro \
                -v <local-state-dir>:/srv/squeezebox \
                -v <audio-dir>:/srv/music \
-               doliana/logitech-media-server
+               doliana/logitech-media-server:latest-7.9.2
 
 The web interface runs on port 9000.  If you also want this available
 on port 80 (so you can use `http://yourserver/` without a port number
