@@ -163,11 +163,11 @@ stages:
           echo "pushed manifest for tag $(datetag)$IMAGE_TAG"
 
 
-          echo "pushing manifest for tag $IMAGE_TAG"
+          echo "pushing manifest for tag latest$IMAGE_TAG"
 
-          ./manifest-tool push from-args --platforms linux/amd64,linux/arm,linux/arm64 --template "$(dockerImageName):$(datetag)$IMAGE_TAG-OS-ARCH" --target "$(dockerImageName):$IMAGE_TAG"
+          ./manifest-tool push from-args --platforms linux/amd64,linux/arm,linux/arm64 --template "$(dockerImageName):$(datetag)$IMAGE_TAG-OS-ARCH" --target "$(dockerImageName):latest$IMAGE_TAG"
 
-          echo "pushed manifest for tag $IMAGE_TAG"
+          echo "pushed manifest for tag latest$IMAGE_TAG"
 
 
 #############################################################################################
@@ -308,8 +308,8 @@ stages:
           echo "pushed manifest for tag $(datetag)$IMAGE_TAG"
 
 
-          echo "pushing manifest for tag $IMAGE_TAG"
+          echo "pushing manifest for tag latest$IMAGE_TAG"
 
-          ./manifest-tool push from-args --platforms linux/amd64,linux/arm,linux/arm64 --template "$(dockerImageName):$(datetag)$IMAGE_TAG-OS-ARCH" --target "$(dockerImageName):$IMAGE_TAG"
+          ./manifest-tool push from-args --platforms linux/amd64,linux/arm,linux/arm64 --template "$(dockerImageName):$(datetag)$IMAGE_TAG-OS-ARCH" --target "$(dockerImageName):latest$IMAGE_TAG"
 
-          echo "pushed manifest for tag $IMAGE_TAG"
+          echo "pushed manifest for tag latest$IMAGE_TAG"
