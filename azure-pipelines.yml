@@ -154,19 +154,18 @@ stages:
           mv manifest-tool-linux-amd64 manifest-tool
           chmod +x manifest-tool
           
-          IMAGE_TAG="$(datetag)$(conditionalBranchTag)-$(lmsVersion)"
+          IMAGE_TAG="$(conditionalBranchTag)-$(lmsVersion)"
+
+          echo "pushing manifest for tag $(datetag)$IMAGE_TAG"
+
+          ./manifest-tool push from-args --platforms linux/amd64,linux/arm,linux/arm64 --template "$(dockerImageName):$(datetag)$IMAGE_TAG-OS-ARCH" --target "$(dockerImageName):$(datetag)$IMAGE_TAG"
+
+          echo "pushed manifest for tag $(datetag)$IMAGE_TAG"
+
 
           echo "pushing manifest for tag $IMAGE_TAG"
 
-          ./manifest-tool push from-args --platforms linux/amd64,linux/arm,linux/arm64 --template "$(dockerImageName):$IMAGE_TAG-OS-ARCH" --target "$(dockerImageName):$IMAGE_TAG"
-
-          echo "pushed manifest for tag $IMAGE_TAG"
-
-
-          IMAGE_TAG="latest$(conditionalBranchTag)-$(lmsVersion)"
-          echo "pushing manifest for tag $IMAGE_TAG"
-
-          ./manifest-tool push from-args --platforms linux/amd64,linux/arm,linux/arm64 --template "$(dockerImageName):$IMAGE_TAG-OS-ARCH" --target "$(dockerImageName):$IMAGE_TAG"
+          ./manifest-tool push from-args --platforms linux/amd64,linux/arm,linux/arm64 --template "$(dockerImageName):$(datetag)$IMAGE_TAG-OS-ARCH" --target "$(dockerImageName):$IMAGE_TAG"
 
           echo "pushed manifest for tag $IMAGE_TAG"
 
@@ -300,18 +299,17 @@ stages:
           mv manifest-tool-linux-amd64 manifest-tool
           chmod +x manifest-tool
           
-          IMAGE_TAG="$(datetag)$(conditionalBranchTag)-$(lmsVersion)"
+          IMAGE_TAG="$(conditionalBranchTag)-$(lmsVersion)"
+
+          echo "pushing manifest for tag $(datetag)$IMAGE_TAG"
+
+          ./manifest-tool push from-args --platforms linux/amd64,linux/arm,linux/arm64 --template "$(dockerImageName):$(datetag)$IMAGE_TAG-OS-ARCH" --target "$(dockerImageName):$(datetag)$IMAGE_TAG"
+
+          echo "pushed manifest for tag $(datetag)$IMAGE_TAG"
+
 
           echo "pushing manifest for tag $IMAGE_TAG"
 
-          ./manifest-tool push from-args --platforms linux/amd64,linux/arm,linux/arm64 --template "$(dockerImageName):$IMAGE_TAG-OS-ARCH" --target "$(dockerImageName):$IMAGE_TAG"
-
-          echo "pushed manifest for tag $IMAGE_TAG"
-
-
-          IMAGE_TAG="latest$(conditionalBranchTag)-$(lmsVersion)"
-          echo "pushing manifest for tag $IMAGE_TAG"
-
-          ./manifest-tool push from-args --platforms linux/amd64,linux/arm,linux/arm64 --template "$(dockerImageName):$IMAGE_TAG-OS-ARCH" --target "$(dockerImageName):$IMAGE_TAG"
+          ./manifest-tool push from-args --platforms linux/amd64,linux/arm,linux/arm64 --template "$(dockerImageName):$(datetag)$IMAGE_TAG-OS-ARCH" --target "$(dockerImageName):$IMAGE_TAG"
 
           echo "pushed manifest for tag $IMAGE_TAG"
