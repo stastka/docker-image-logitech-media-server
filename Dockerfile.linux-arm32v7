@@ -17,6 +17,7 @@ RUN apt-get update && \
     apt-get -y install curl wget nano faad flac lame sox libio-socket-ssl-perl libcrypt-openssl-rsa-perl \
     iputils-ping \
     iproute2 \
+    pulseaudio-utils \
     && apt-get clean
 
 # Download and install LMS
@@ -33,6 +34,7 @@ RUN userdel squeezeboxserver
 VOLUME $SQUEEZE_VOL
 EXPOSE 3483 3483/udp 9000 9090
 
+COPY pulseaudio.client.conf /etc/pulse/client.conf
 COPY entrypoint.sh /entrypoint.sh
 COPY start-squeezebox.sh /start-squeezebox.sh
 RUN chmod 755 /entrypoint.sh /start-squeezebox.sh
