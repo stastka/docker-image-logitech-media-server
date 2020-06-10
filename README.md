@@ -20,6 +20,8 @@ To always get the latest version use [this url](http://www.mysqueezebox.com/upda
 Find the image on [docker hub](https://hub.docker.com/r/doliana/logitech-media-server/)
 
 ### Changes
+- 9.6.2020:
+  - Add support for Pulseaudio - enables use of the host speakers and WaveInput plugin with Pulseaudio
 
 - 24.11.2019:
   - the "latest" tag has been removed - so either latest-7.9.2 or latest-7.9.0 should be used. This simplifies the deployment pipeline.
@@ -69,6 +71,16 @@ for example:
     AUDIO_DIR=/home/USERNAME/Music
 
 [docker-compose-logitech-media-server.yml]: docker-compose-logitech-media-server.yml
+
+## Using with Pulseaudio
+This container can use the host Pulseaudio server directly with those 2 steps:
+Enable Pulseaudio UNIX socket on the host
+
+    pactl load-module module-native-protocol-unix auth-anonymous=1 auth-cookie-enabled=0 socket=/tmp/pulseaudio.socket
+
+When running the container, link the socket through a volume
+
+    -v /tmp/pulseaudio.socket:/tmp/pulseaudio.socket \
 
 ## Build Status
 
