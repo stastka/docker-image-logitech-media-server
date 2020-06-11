@@ -20,6 +20,8 @@ To always get the latest version use [this url](http://www.mysqueezebox.com/upda
 Find the image on [docker hub](https://hub.docker.com/r/doliana/logitech-media-server/)
 
 ### Changes
+- 11.06.2020
+  - Adding ffmpeg dependency
 
 - 24.11.2019:
   - the "latest" tag has been removed - so either latest-7.9.2 or latest-7.9.0 should be used. This simplifies the deployment pipeline.
@@ -69,6 +71,12 @@ for example:
     AUDIO_DIR=/home/USERNAME/Music
 
 [docker-compose-logitech-media-server.yml]: docker-compose-logitech-media-server.yml
+
+## File conversion (custom-convert.conf)
+It is possible to define custom commands for the conversion of file types (Settings/Advanced/File Types) and to redefine existing ones. 
+To do this, create a `custom-convert.conf` file and mount it to your container by adding this volume directive (assuming the file is in the current working directory).
+
+    -v $PWD/custom-convert.conf:/etc/squeezeboxserver/custom-convert.conf 
 
 ## Build Status
 
