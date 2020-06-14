@@ -18,6 +18,7 @@ RUN apt-get update && \
     iputils-ping \
     iproute2 \
     ffmpeg \
+    pulseaudio-utils \
     && apt-get clean
 
 # Download and install LMS
@@ -34,6 +35,7 @@ RUN userdel squeezeboxserver
 VOLUME $SQUEEZE_VOL
 EXPOSE 3483 3483/udp 9000 9090
 
+COPY pulseaudio.client.conf /etc/pulse/client.conf
 COPY entrypoint.sh /entrypoint.sh
 COPY start-squeezebox.sh /start-squeezebox.sh
 RUN chmod 755 /entrypoint.sh /start-squeezebox.sh

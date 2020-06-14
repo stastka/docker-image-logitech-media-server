@@ -22,7 +22,8 @@ Find the image on [docker hub](https://hub.docker.com/r/doliana/logitech-media-s
 ### Changes
 - 11.06.2020
   - Adding ffmpeg dependency
-
+- 9.6.2020:
+  - Add support for Pulseaudio - enables use of the host speakers and WaveInput plugin with Pulseaudio
 - 24.11.2019:
   - the "latest" tag has been removed - so either latest-7.9.2 or latest-7.9.0 should be used. This simplifies the deployment pipeline.
   - migrated from travis-ci to Azure DevOps pipeline
@@ -77,6 +78,16 @@ It is possible to define custom commands for the conversion of file types (Setti
 To do this, create a `custom-convert.conf` file and mount it to your container by adding this volume directive (assuming the file is in the current working directory).
 
     -v $PWD/custom-convert.conf:/etc/squeezeboxserver/custom-convert.conf 
+
+## Using with Pulseaudio
+This container can use the host Pulseaudio server directly with those 2 steps:
+Enable Pulseaudio UNIX socket on the host
+
+    pactl load-module module-native-protocol-unix auth-anonymous=1 auth-cookie-enabled=0 socket=/tmp/pulseaudio.socket
+
+When running the container, link the socket through a volume
+
+    -v /tmp/pulseaudio.socket:/tmp/pulseaudio.socket
 
 ## Build Status
 
