@@ -5,6 +5,8 @@
 - [Changes from original source](#changes-from-original-source)
 - [Usage (Copied from original instructions)](#usage-copied-from-original-instructions)
 - [Using docker-compose](#using-docker-compose)
+- [File conversion (custom-convert.conf)](#file-conversion-custom-convertconf)
+- [Using with Pulseaudio](#using-with-pulseaudio)
 - [Build Status](#build-status)
 
 ## Description
@@ -20,6 +22,7 @@ To always get the latest version use [this url](http://www.mysqueezebox.com/upda
 Find the image on [docker hub](https://hub.docker.com/r/doliana/logitech-media-server/)
 
 ### Changes
+
 - 11.06.2020
   - Adding ffmpeg dependency
 - 9.6.2020:
@@ -74,12 +77,14 @@ for example:
 [docker-compose-logitech-media-server.yml]: docker-compose-logitech-media-server.yml
 
 ## File conversion (custom-convert.conf)
+
 It is possible to define custom commands for the conversion of file types (Settings/Advanced/File Types) and to redefine existing ones. 
 To do this, create a `custom-convert.conf` file and mount it to your container by adding this volume directive (assuming the file is in the current working directory).
 
     -v $PWD/custom-convert.conf:/etc/squeezeboxserver/custom-convert.conf 
 
 ## Using with Pulseaudio
+
 This container can use the host Pulseaudio server directly with those 2 steps:
 Enable Pulseaudio UNIX socket on the host
 
