@@ -79,6 +79,8 @@ for example:
 ## File conversion (custom-convert.conf)
 
 It is possible to define custom commands for the conversion of file types (Settings/Advanced/File Types) and to redefine existing ones. 
+This is useful when the players do not support some file types, to make the server transcode to a supported file type, using predefined commands on the server.
+There is little documentation of this feature. This (forum thread)[https://forums.slimdevices.com/showthread.php?107012-Transcode-Resample-Custom-convert-conf] gives the basic steps.
 To do this, create a `custom-convert.conf` file and mount it to your container by adding this volume directive (assuming the file is in the current working directory).
 
     -v $PWD/custom-convert.conf:/etc/squeezeboxserver/custom-convert.conf 
