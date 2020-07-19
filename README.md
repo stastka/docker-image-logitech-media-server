@@ -23,6 +23,8 @@ Find the image on [docker hub](https://hub.docker.com/r/doliana/logitech-media-s
 
 ### Changes
 
+- 19.07.2020
+  - Add image for v8.0
 - 11.06.2020
   - Adding ffmpeg dependency
 - 9.6.2020:
