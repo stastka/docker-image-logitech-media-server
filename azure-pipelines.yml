@@ -462,13 +462,13 @@ stages:
 
 
 #############################################################################################
-# Biuld & Publish Logitech Media Server 7.7.6
+# Biuld & Publish Logitech Media Server 7.9.4
 #############################################################################################
 
-  - job: Build_7_7_6
-    displayName: Build & Publish 7.7.6
+  - job: Build_7_9_4
+    displayName: Build & Publish 7.9.4
     variables:
-      lmsVersion: '7.7.6'
+      lmsVersion: '7.9.4'
     pool:
       vmImage: 'ubuntu-latest'
     steps:
