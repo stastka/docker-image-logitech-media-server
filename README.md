@@ -41,8 +41,7 @@ Find the image on [docker hub](https://hub.docker.com/r/doliana/logitech-media-s
 
 ## Changes from original source
 
-- Always use latest 7.9.X version from [mysqueezebox](http://downloads.slimdevices.com/nightly/index.php?ver=7.9)
-- Change to use deb_all package to simplify installation
+- Always use latest 7.9.X / 8.0 version from [mysqueezebox](http://downloads.slimdevices.com/nightly/index.php?ver=7.9)
 
 ## Usage (Copied from original instructions)
 
