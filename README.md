@@ -24,10 +24,10 @@ Find the image on [docker hub](https://hub.docker.com/r/doliana/logitech-media-s
 ### Changes
 
 - 20.07.2020
-  - Consolidated image versions to 
-    - 7.7.6 - legacy
+  - Consolidated image versions to
     - 7.9.2 - stable
-    - 7.9.3 - beta
+    - 7.9.3 - stable
+    - 7.9.4 - beta
     - 8.0 - alpha
 - 19.07.2020
   - Add image for v8.0

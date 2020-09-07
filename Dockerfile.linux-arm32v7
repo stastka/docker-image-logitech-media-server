@@ -10,7 +10,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # this is the version of LMS to use
 ARG VERSION
-ARG PACKAGE_URL=http://www.mysqueezebox.com/update/?version=${VERSION}&revision=1&geturl=1&os=deb
+ARG PACKAGE_URL=http://www.mysqueezebox.com/update/?version=${VERSION}&revision=1&geturl=1&os=debarm
 
 # Install requirements and utilities
 RUN apt-get update && \
