@@ -28,7 +28,7 @@ stages:
 
 
 #############################################################################################
-# Biuld & Publish Logitech Media Server 7.9.2
+# Build & Publish Logitech Media Server 7.9.2
 #############################################################################################
   - job: Build_7_9_2
     displayName: Build & Publish 7.9.2
@@ -173,7 +173,7 @@ stages:
 
 
 #############################################################################################
-# Biuld & Publish Logitech Media Server 7.9.3
+# Build & Publish Logitech Media Server 7.9.3
 #############################################################################################
 
   - job: Build_7_9_3
@@ -318,7 +318,7 @@ stages:
 
 
 #############################################################################################
-# Biuld & Publish Logitech Media Server 7.9.4
+# Build & Publish Logitech Media Server 7.9.4
 #############################################################################################
 
   - job: Build_7_9_4
@@ -462,7 +462,7 @@ stages:
           echo "pushed manifest for tag latest$IMAGE_TAG"
 
 #############################################################################################
-# Biuld & Publish Logitech Media Server 8.0
+# Build & Publish Logitech Media Server 8.0
 #############################################################################################
   - job: Build_8_0
     displayName: Build & Publish 8.0
@@ -606,7 +606,7 @@ stages:
           echo "pushed manifest for tag latest$IMAGE_TAG"
 
 #############################################################################################
-# Biuld & Publish Logitech Media Server 8.1
+# Build & Publish Logitech Media Server 8.1
 #############################################################################################
   - job: Build_8_1
     displayName: Build & Publish 8.1
