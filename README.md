@@ -23,6 +23,10 @@ Find the image on [docker hub](https://hub.docker.com/r/doliana/logitech-media-s
 
 ### Changes
 
+- 10.01.2021
+  - due to changes in the update-api, only the latest stable community version is now supported (currently 8.1.0)
+  - removed old and unused tags
+  - introduced "latest-version" tag that represents the versions received by update-api (<http://www.mysqueezebox.com/update/>) - when a new version comes up, old versions will remain
 - 20.07.2020
   - Consolidated image versions to
     - 7.9.2 - stable
