@@ -60,7 +60,8 @@ stages:
           PACKAGE_URL="http://www.mysqueezebox.com/update/?version=$(lmsVersion)&revision=1&geturl=1&os=debamd64"
           echo "lms url to extract version: $PACKAGE_URL"
 
-          ACTUALVER=$(wget -q -O - ${PACKAGE_URL} | grep -Po 'server_\K[^_]*')
+          # get actual version from received url
+          ACTUALVER=$(wget -q -O - ${PACKAGE_URL} | grep -Po '/logitechmediaserver_\K[^_]*')
           echo "using actual LMS Version $ACTUALVER"
           echo "##vso[task.setvariable variable=actualLmsVersion]$ACTUALVER"
     - task: Bash@3
