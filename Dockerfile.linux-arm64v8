@@ -3,6 +3,7 @@ COPY tmp/qemu-aarch64-static /usr/bin/qemu-aarch64-static
 
 LABEL maintainer="Lars Kellogg-Stedman <lars@oddbit.com>"
 LABEL maintainer="Raymond M Mouthaan <raymondmmouthaan@gmail.com>"
+LABEL maintainer="Denis Oliana"
 
 ENV SQUEEZE_VOL /srv/squeezebox
 ENV LANG C.UTF-8
