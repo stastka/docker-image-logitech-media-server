@@ -22,7 +22,8 @@ To always get the latest version use [this url](http://www.mysqueezebox.com/upda
 Find the image on [docker hub](https://hub.docker.com/r/doliana/logitech-media-server/)
 
 ### Changes
-
+- 15.03.2021
+  - Add Dockerfile for latest supported Logitec Server 7.9.3
 - 10.01.2021
   - due to changes in the update-api, only the latest stable community version is now supported (currently 8.1.0)
   - removed old and unused tags
